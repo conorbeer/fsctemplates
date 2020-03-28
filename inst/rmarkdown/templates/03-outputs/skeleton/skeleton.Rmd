@@ -1,0 +1,42 @@
+---
+title: "Program Outputs"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dev = "CairoPNG", warning = FALSE, message = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load-packages}
+pacman::p_load(
+  "tidyverse"
+)
+
+source("R/pipeline/load-data.R")
+source("R/pipeline/clean-data.R")
+```
+
+
+## Introduction
+
+### Purpose
+
+This notebook presents summary statistics about the characteristics of participants in the FAST pilot program. Characteristics recorded in the administrative data are summarized for all FAST participants, while characteristics recorded only on the exit survey are summarized for participants who completed the exit survey. 
+
+```{r load-data}
+dat <- load_data(use_cache = TRUE) %>% clean_data()
+
+```
+
+### Summary of key findings
+
+Summarize the interesting findings from your analysis here. 
+
+## Analysis
+
+Put any analysis outputs here, and describe the results in text. 
+
+
