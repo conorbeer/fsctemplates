@@ -3,7 +3,9 @@ create_analysis_project <- function(path, ...) {
 
   # Create directory skeleton
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
-  dir.create(file.path(path,"R"))
+  dir.create(file.path(path, "R"))
+  dir.create(file.path(path, "R/pipeline"))
+  dir.create(file.path(path, "R/analysis"))
   dir.create(file.path(path, "data"))
   dir.create(file.path(path, "data/cache"))
   dir.create(file.path(path, "data/clean"))
@@ -15,15 +17,16 @@ create_analysis_project <- function(path, ...) {
   dir.create(file.path(path, "output/tab"))
 
   # Create basic files
-  cat("\ndata", file = file.path(path, ".gitignore"), append = TRUE)
-  file.create(file.path(path, "README.md"))
+  cat("\ndata/", file = file.path(path, ".gitignore"), append = TRUE)
+
 
   # Generate templated reports
   generate_report <- function(slug) {
     rmarkdown::draft(
       file.path(path, "report", paste0(slug, ".Rmd")),
       template = slug,
-      package = "fsctemplates"
+      package = "fsctemplates",
+      edit = FALSE
     )
   }
 
@@ -32,6 +35,12 @@ create_analysis_project <- function(path, ...) {
   generate_report("03-outputs")
   generate_report("03-outcomes")
   generate_report("04-impacts")
+
+  # Generate script files
+  file.create(file.path("R", "CONTROL.R"))
+  file.create(file.path("R", "utils.R"))
+  file.create(file.path("R", "pipeline", "load-data.R"))
+  file.create(file.path("R", "pipeline",  "clean-data.R"))
 
 
 
