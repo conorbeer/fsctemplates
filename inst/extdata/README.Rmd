@@ -1,0 +1,90 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, dev = "CairoPNG", warning = FALSE, message = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+```{r load-packages}
+pacman::p_load(
+  "tidyverse"
+)
+```
+
+
+## Questions, I know you've got em. 
+
+### What is this document? 
+
+It's a README for this and other analysis projects. 
+It tells you what's in the folder and how best to use it. 
+We're still very early in the process of formalizing our analysis workflow at Blueprint, so watch for changes to the analysis project template. 
+That said, things should be organized in more-or-less the same way from this project onward. 
+
+### Why can't I just do things my own way? 
+
+Because we all need to be on the same page about how projects are organized so that when analysis changes hands for feedback, review, or collaboration, the person jumping in on the project isn't lost. 
+If you have questions, comments, or thoughts on how we could better organize projects, please share them. 
+For the foreseeable future, this project template will be in the "alpha" stage of development, meaning that it can be flexible and responsive to updates. 
+
+### Why is it like this? 
+
+This is adapted from a number of public resources on R project management, tailored to the specific needs of Blueprint. 
+
+## What's a project?
+
+```{r project-folder}
+fs::dir_tree("./../learning-report-two")
+```
+
+
+### Data 
+
+The `data` folder is where all your data should live, unless it lives online and it is preferable to occasionally refresh its contents through an API. 
+
+
+```{r folder-data}
+fs::dir_tree("data")
+```
+
+#### Cache
+
+Holds the cached outputs of functions for conducting intensive data loading / manipulation tasks. 
+Manipulate its contents only within functions.
+
+#### Raw
+
+Holds all raw data sources that are not accessible through an API. 
+
+#### Clean
+
+Holds final clean datasets used in the analysis work. 
+
+### Report 
+
+The `report` folder contains several templated reports that break the work of analyzing data down into manageable chunks. 
+The specific report titles are suggestions, and the the overall set / number of reports is highly flexible. 
+Feel free to express yourself here. 
+
+```{r folder-report}
+fs::dir_tree("report")
+```
+
+### Output
+
+The `output` folder contains two subfolders `tab` and `fig`. You should use these subfolders to store any analysis outputs that you're generating to include in word reports, or share as excel spreadsheets. 
+
+### Reference
+
+If you're using any methods drawn from literature, save that literature here as you go along.
+
+### R
+
+The R folder holds all your source code, along with a CONTROL.R file which runs the full data loading, cleaning, and analysis pipeline. 
+
+```{r folder-R}
+fs::dir_tree("R")
+```

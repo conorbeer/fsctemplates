@@ -17,7 +17,7 @@ create_analysis_project <- function(path, ...) {
   dir.create(file.path(path, "output/tab"))
 
   # Create basic files
-  cat("\ndata/", file = file.path(path, ".gitignore"), append = TRUE)
+  cat("data/", file = file.path(path, ".gitignore"), append = TRUE)
 
 
   # Generate templated reports
@@ -33,14 +33,20 @@ create_analysis_project <- function(path, ...) {
   generate_report("01-data-cleaning")
   generate_report("02-characteristics")
   generate_report("03-outputs")
-  generate_report("03-outcomes")
-  generate_report("04-impacts")
+  generate_report("04-outcomes")
+  generate_report("05-impacts")
 
   # Generate script files
-  file.create(file.path("R", "CONTROL.R"))
-  file.create(file.path("R", "utils.R"))
-  file.create(file.path("R", "pipeline", "load-data.R"))
-  file.create(file.path("R", "pipeline",  "clean-data.R"))
+  copy_script <- function(source_name, destination_path) {
+    script_path <- system.file("extdata", source_name, package = "fsctemplates")
+    file.copy(script_path, destination_path)
+  }
+
+
+  copy_script("README.Rmd", file.path(path, "README.Rmd"))
+  copy_script("CONTROL.R", file.path(path, "R", "CONTROL.R"))
+  copy_script("load-data.R", file.path(path, "R", "pipeline", "load-data.R"))
+  copy_script("clean-data.R", file.path(path, "R", "pipeline",  "clean-data.R"))
 
 
 
