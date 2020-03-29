@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "FSC Analysis Project README"
 output: github_document
 ---
 
@@ -88,3 +88,15 @@ The R folder holds all your source code, along with a CONTROL.R file which runs 
 ```{r folder-R}
 fs::dir_tree("R")
 ```
+
+## What's the process? 
+
+### 1. build `load_data` function
+
+### 2. complete report `01-data-cleaning.Rmd`
+
+### 3. build `clean_data` to reflect decisions described in `01-data-cleaning.Rmd`
+
+### 4. test data cleaning pipeline by running `CONTROL.R` and interactively examining the results 
+
+### 5. complete other reports using cleaned datasets
