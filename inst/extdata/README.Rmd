@@ -22,7 +22,6 @@ pacman::p_load(
 It's a README for this and other analysis projects. 
 It tells you what's in the folder and how best to use it. 
 We're still very early in the process of formalizing our analysis workflow at Blueprint, so watch for changes to the analysis project template. 
-That said, things should be organized in more-or-less the same way from this project onward. 
 
 ### Why can't I just do things my own way? 
 
@@ -30,14 +29,22 @@ Because we all need to be on the same page about how projects are organized so t
 If you have questions, comments, or thoughts on how we could better organize projects, please share them. 
 For the foreseeable future, this project template will be in the "alpha" stage of development, meaning that it can be flexible and responsive to updates. 
 
-### Why is it like this? 
+### Where does this come from? 
 
 This is adapted from a number of public resources on R project management, tailored to the specific needs of Blueprint. 
+It is designed to be a version of a [research compendium](https://peerj.com/preprints/3192.pdf), as described by 
+Marwick et al.
+
+### What's the point? 
+
+- Review: facilitate the review of analysis code for coherence, performance, and quality assurance
+- Collaboration: allow projects to change hands without the new analyst feeling lost
+- Reproducibility: develop analysis projects such that they can be run from end-to-end on-demand to reproduce results from raw data. 
 
 ## What's a project?
 
 ```{r project-folder}
-fs::dir_tree("./../learning-report-two")
+fs::dir_tree()
 ```
 
 

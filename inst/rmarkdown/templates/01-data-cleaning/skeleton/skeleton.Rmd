@@ -37,6 +37,7 @@ Support your decisions with analysis where appropriate.
 
 ### Load data
 
+Load the cached output from the `load_data` function. 
 
 ```{r load-data}
 dat <- load_data(use_cache = TRUE)
